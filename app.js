@@ -1,11 +1,11 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 
 let amigos = [];
-let amigosMin= [];
+let amigosMin= []; // Array extra para controlar nombres duplicados
 
 function agregarAmigo(){
     let nombreDeUsuario = document.getElementById('amigo').value.trim();
-    let nombreMinusculas = nombreDeUsuario.toLowerCase();
+    let nombreMinusculas = nombreDeUsuario.toLowerCase(); // Convierte toda la cadena en minuscula para verificar si ya existe ese nombre
     //Verificar Vacios
     if (nombreDeUsuario === ""){
         alert ('Por favor, inserte un nombre.');
@@ -20,7 +20,7 @@ function agregarAmigo(){
 }
 
 function actualizarLista(nombreOg,nombreMod){
-
+    // Verifica si ya existe el nombre ingresado
     for (let i=0; i< amigos.length;i++){
     
         if (nombreMod === amigosMin[i]){
@@ -42,8 +42,9 @@ function sortearAmigo(){
     
     document.getElementById('reiniciar').removeAttribute('disabled');
     document.getElementById('listaAmigos').innerHTML = '';
-    
-    if(amigos.length ===0){
+
+    // Verifica si existe informacion en la lista
+    if(amigos.length ===0){ 
        alert ('No ingresaste ningun nombre');
        document.getElementById('reiniciar').setAttribute('disabled',true);
        return; 
@@ -68,7 +69,7 @@ function condicionesIniciales(){
 function reiniciarJuego() {
     //limpiar caja
     limpiarCaja();
-    //Vaciar arrayS amigos y amigosMin
+    //Vaciar arrays amigos y amigosMin
     //Deshabilitar el botón de nuevo juego
     //Eliminar resultado
     condicionesIniciales();
@@ -77,6 +78,7 @@ function reiniciarJuego() {
 }
 
 condicionesIniciales();
+
 
 
 
