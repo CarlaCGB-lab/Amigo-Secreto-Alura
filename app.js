@@ -1,36 +1,39 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 
 let amigos = [];
-//let nombreDeUsuario = document.getElementById('amigo').value.trim();
+let amigosMin= [];
 
 function agregarAmigo(){
     let nombreDeUsuario = document.getElementById('amigo').value.trim();
+    let nombreMinusculas = nombreDeUsuario.toLowerCase();
     //Verificar Vacios
     if (nombreDeUsuario === ""){
         alert ('Por favor, inserte un nombre.');
         return;
     } 
     
-    actualizarLista(nombreDeUsuario);
+    actualizarLista(nombreDeUsuario,nombreMinusculas);
 
     document.getElementById('amigo').value ='';
         
     
 }
 
-function actualizarLista(nombre){
+function actualizarLista(nombreOg,nombreMod){
 
     for (let i=0; i< amigos.length;i++){
     
-        if (nombre === amigos[i]){
+        if (nombreMod === amigosMin[i]){
 
-            alert (`Ya se ingreso el nombre ${nombre}`);
+            alert (`Ya se ingreso el nombre ${nombreOg}`);
             return;
         }
     }
-        document.getElementById('listaAmigos').innerHTML += `<li> ${nombre} </li>`;
-        amigos.push(nombre);
+        document.getElementById('listaAmigos').innerHTML += `<li> ${nombreOg} </li>`;
+        amigos.push(nombreOg);
+        amigosMin.push(nombreMod);
         console.log(amigos);
+        console.log(amigosMin);
         
             
 }
@@ -57,6 +60,7 @@ function limpiarCaja() {
 
 function condicionesIniciales(){
     amigos=[];
+    amigosMin=[];
     document.querySelector('#reiniciar').setAttribute('disabled','true');
     document.getElementById('resultado').innerHTML = '';
 }
@@ -64,7 +68,7 @@ function condicionesIniciales(){
 function reiniciarJuego() {
     //limpiar caja
     limpiarCaja();
-    //Vaciar array amigos
+    //Vaciar arrayS amigos y amigosMin
     //Deshabilitar el botón de nuevo juego
     //Eliminar resultado
     condicionesIniciales();
